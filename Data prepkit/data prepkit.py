@@ -73,3 +73,4 @@ class Dataprepkit:
 file_path = input("Enter your file path: ")
 obj = Dataprepkit()
 obj.read_data(file_path)
+obj.data
