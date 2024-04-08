@@ -3,17 +3,21 @@ import pandas as pd
 
 class Dataprepkit:
     def __init__(self):
+        
         self.data = None
-    
-    def read_data(self, file_path, file_format):
-    
+
+    def read_data(self, file_path): 
+        
         try:
+            file_format = file_path.split('.')[-1]
             if file_format == 'csv':
                 self.data = pd.read_csv(file_path)
-            elif file_format == 'excel':
-                self.data = pd.read_excel(file_path)
+            #elif file_format == 'excel':
+                #self.data = pd.read_excel(file_path)
             elif file_format == 'json':
                 self.data = pd.read_json(file_path)
+            elif file_format == ["xlsx","xls"]:
+                self.data = pd.read_excel(file_path)    
             else:
                 raise ValueError("Unsupported file format")
                 
@@ -67,6 +71,5 @@ class Dataprepkit:
             
 
 file_path = input("Enter your file path: ")
-file_format = input("Enter the file format: ")
 obj = Dataprepkit()
-obj.read_data(file_path , file_format)
+obj.read_data(file_path)
